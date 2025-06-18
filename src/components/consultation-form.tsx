@@ -48,14 +48,11 @@ export default function ConsultationForm() {
 
   const handleSubmit = async (data: ConsultationFormData) => {
     try {
-      const response = await apiRequest("POST", "/api/consultation", data);
-      const consultationData = await response.json();
-      
+      await apiRequest("POST", "/api/consultation", data);
       toast({
         title: "Consultation Request Submitted",
         description: "Your consultation request has been submitted successfully!"
       });
-      
       setIsOpen(false);
     } catch (error: any) {
       toast({

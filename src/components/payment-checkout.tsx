@@ -20,7 +20,7 @@ interface PaymentCheckoutProps {
   onClose: () => void;
 }
 
-function CheckoutForm({ onComplete }: { onComplete: (data: any) => void }) {
+function CheckoutForm() {
   // const stripe = useStripe();
   // const elements = useElements();
   const { toast } = useToast();
@@ -28,46 +28,9 @@ function CheckoutForm({ onComplete }: { onComplete: (data: any) => void }) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // if (!stripe || !elements) {
-    //   return;
-    // }
-
     setIsProcessing(true);
-
     try {
-      // const { error, paymentIntent } = await stripe.confirmPayment({
-      //   elements,
-      //   confirmParams: {
-      //     return_url: window.location.origin,
-      //   },
-      //   redirect: 'if_required'
-      // });
-
-      // if (error) {
-      //   toast({
-      //     title: "Payment Failed",
-      //     description: error.message,
-      //     variant: "destructive",
-      //   });
-      // } else if (paymentIntent && paymentIntent.status === 'succeeded') {
-      //   // Confirm payment on backend
-      //   await apiRequest("POST", "/api/confirm-payment", {
-      //     paymentIntentId: paymentIntent.id,
-      //     consultationId: bookingData.id
-      //   });
-
-      //   toast({
-      //     title: "Payment Successful",
-      //     description: "Your consultation has been confirmed!",
-      //   });
-
-      //   onComplete({
-      //     paymentIntentId: paymentIntent.id,
-      //     paymentStatus: 'paid',
-      //     amount: 5000
-      //   });
-      // }
+      // Payment logic (commented out for MVP)
     } catch (error: any) {
       toast({
         title: "Payment Error",
@@ -201,7 +164,7 @@ export default function PaymentCheckout({ bookingData, onComplete, onClose }: Pa
         </Card>
 
         {/* <Elements stripe={stripePromise} options={{ clientSecret }}> */}
-          <CheckoutForm onComplete={onComplete} />
+          <CheckoutForm />
         {/* </Elements> */}
         
         <div className="text-center mt-4">
