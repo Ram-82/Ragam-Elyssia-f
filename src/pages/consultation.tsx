@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar, ArrowRight } from "lucide-react";
+import { Calendar, ArrowRight, Phone, Mail, MessageCircle, MapPin, CheckCircle, Clock, Heart, Star } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -66,28 +66,103 @@ export default function Consultation() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-ivory flex flex-col items-center justify-center">
-        <Card className="bg-white border-0 shadow-luxury mb-12">
-          <CardContent className="p-12 text-center">
-            <h1 className="font-playfair text-4xl font-bold text-charcoal mb-6">Thank You</h1>
-            <p className="font-cormorant text-xl text-warm-gray mb-8">
+      <div className="min-h-screen bg-ivory">
+        {/* Navigation */}
+        <nav className="fixed top-0 w-full bg-ivory/95 backdrop-blur-sm z-50 border-b border-gold/10">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="flex justify-between items-center py-6">
+              <Link href="/">
+                <div className="font-playfair text-2xl font-bold text-charcoal tracking-wide">
+                  Ragam Elyssia
+                </div>
+              </Link>
+            </div>
+          </div>
+        </nav>
+        {/* Success Message */}
+        <section className="pt-32 pb-24 px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <CheckCircle className="text-gold mx-auto h-20 w-20 mb-8" />
+            <h1 className="font-playfair text-4xl md:text-5xl font-bold text-charcoal mb-6 tracking-wide">
+              Thank You
+            </h1>
+            <p className="font-cormorant text-xl md:text-2xl text-warm-gray mb-12 leading-relaxed">
               Your consultation request has been received. We're excited to learn more about your vision.
             </p>
-            <Link href="/">
-              <Button className="bg-charcoal text-ivory hover:bg-gold hover:text-charcoal transition-all duration-300 px-8 py-3 font-inter tracking-wide">
-                Return Home
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
+            <Card className="bg-white border-0 shadow-luxury mb-12">
+              <CardContent className="p-12">
+                <h2 className="font-playfair text-2xl font-semibold text-charcoal mb-8 tracking-wide">
+                  What to Expect Next
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div className="text-center">
+                    <Clock className="text-gold h-12 w-12 mx-auto mb-4" />
+                    <h3 className="font-playfair text-lg font-semibold text-charcoal mb-2 tracking-wide">
+                      Within 24 Hours
+                    </h3>
+                    <p className="font-inter text-warm-gray text-sm leading-relaxed">
+                      Our team will review your request and reach out to schedule your consultation
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <Heart className="text-gold h-12 w-12 mx-auto mb-4" />
+                    <h3 className="font-playfair text-lg font-semibold text-charcoal mb-2 tracking-wide">
+                      Personal Consultation
+                    </h3>
+                    <p className="font-inter text-warm-gray text-sm leading-relaxed">
+                      We'll discuss your vision, preferences, and how we can bring your event to life
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <Star className="text-gold h-12 w-12 mx-auto mb-4" />
+                    <h3 className="font-playfair text-lg font-semibold text-charcoal mb-2 tracking-wide">
+                      Custom Proposal
+                    </h3>
+                    <p className="font-inter text-warm-gray text-sm leading-relaxed">
+                      Receive a tailored proposal designed specifically for your unique event
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <div className="space-y-4">
+              <p className="font-inter text-warm-gray">
+                Have questions? Reach us at <a href="mailto:ragamelyssia@gmail.com" className="text-gold hover:text-gold-dark">ragamelyssia@gmail.com</a> or <a href="tel:+919632069662" className="text-gold hover:text-gold-dark">+91 9632069662</a>
+              </p>
+              <Link href="/">
+                <Button className="bg-charcoal text-ivory hover:bg-gold hover:text-charcoal transition-all duration-300 px-8 py-3 font-inter tracking-wide">
+                  Return Home
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-ivory">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full bg-ivory/95 backdrop-blur-sm z-50 border-b border-gold/10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex justify-between items-center py-6">
+            <Link href="/">
+              <div className="font-playfair text-2xl font-bold text-charcoal tracking-wide">
+                Ragam Elyssia
+              </div>
+            </Link>
+            <div className="hidden md:flex items-center space-x-12">
+              <Link href="/" className="text-warm-gray hover:text-charcoal transition-colors font-inter tracking-wide text-sm">Home</Link>
+              <Link href="/about" className="text-warm-gray hover:text-charcoal transition-colors font-inter tracking-wide text-sm">About</Link>
+              <Link href="/services" className="text-warm-gray hover:text-charcoal transition-colors font-inter tracking-wide text-sm">Services</Link>
+              <Link href="/contact" className="text-warm-gray hover:text-charcoal transition-colors font-inter tracking-wide text-sm">Contact</Link>
+            </div>
+          </div>
+        </div>
+      </nav>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6 lg:px-8 bg-cream/30">
+      <section className="pt-32 pb-16 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <div className="mb-8">
             <Calendar className="text-gold mx-auto h-12 w-12 mb-6" />
