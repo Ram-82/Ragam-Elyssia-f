@@ -16,7 +16,6 @@ import { useToast } from "@/hooks/use-toast";
 
 interface PaymentCheckoutProps {
   bookingData: any;
-  onComplete: (paymentData: any) => void;
   onClose: () => void;
 }
 
@@ -57,7 +56,7 @@ function CheckoutForm() {
   );
 }
 
-export default function PaymentCheckout({ bookingData, onComplete, onClose }: PaymentCheckoutProps) {
+export default function PaymentCheckout({ bookingData, onClose }: PaymentCheckoutProps) {
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
