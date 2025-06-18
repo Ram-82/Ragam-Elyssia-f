@@ -11,6 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
+import { Link } from "wouter";
 
 const consultationSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -72,9 +73,11 @@ export default function Consultation() {
             <p className="font-cormorant text-xl text-warm-gray mb-8">
               Your consultation request has been received. We're excited to learn more about your vision.
             </p>
-            <Button href="/" className="bg-charcoal text-ivory hover:bg-gold hover:text-charcoal transition-all duration-300 px-8 py-3 font-inter tracking-wide">
-              Return Home
-            </Button>
+            <Link href="/">
+              <Button className="bg-charcoal text-ivory hover:bg-gold hover:text-charcoal transition-all duration-300 px-8 py-3 font-inter tracking-wide">
+                Return Home
+              </Button>
+            </Link>
           </CardContent>
         </Card>
       </div>
