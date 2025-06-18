@@ -8,23 +8,26 @@ import { MapPin, Phone, Mail, MessageCircle, Clock, Globe, CheckCircle } from "l
 import { Link } from "wouter";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { insertContactInquirySchema } from "@shared/schema";
+import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 
-type ContactForm = {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-};
+// Local validation schema for contact form
+const contactSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email"),
+  subject: z.string().min(5, "Subject must be at least 5 characters"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
 
-  const form = useForm<ContactForm>({
-    resolver: zodResolver(insertContactInquirySchema),
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -33,7 +36,7 @@ export default function Contact() {
     }
   });
 
-  const onSubmit = async (data: ContactForm) => {
+  const onSubmit = async (data: ContactFormData) => {
     try {
       await apiRequest("POST", "/api/contact", data);
       setIsSubmitted(true);
