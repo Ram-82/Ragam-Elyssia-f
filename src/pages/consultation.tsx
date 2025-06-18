@@ -260,7 +260,7 @@ export default function Consultation() {
                             <FormLabel className="font-inter text-charcoal tracking-wide">Event Type</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
-                                <SelectTrigger className="select-trigger-custom">
+                                <SelectTrigger className="border-charcoal text-charcoal">
                                   <SelectValue placeholder="Select event type" />
                                 </SelectTrigger>
                               </FormControl>
@@ -303,7 +303,7 @@ export default function Consultation() {
                             <FormLabel className="font-inter text-charcoal tracking-wide">Guest Count</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
-                                <SelectTrigger className="select-trigger-custom">
+                                <SelectTrigger className="border-charcoal text-charcoal">
                                   <SelectValue placeholder="Number of guests" />
                                 </SelectTrigger>
                               </FormControl>
@@ -327,7 +327,7 @@ export default function Consultation() {
                             <FormLabel className="font-inter text-charcoal tracking-wide">Budget Range</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
-                                <SelectTrigger className="select-trigger-custom">
+                                <SelectTrigger className="border-charcoal text-charcoal">
                                   <SelectValue placeholder="Select budget range" />
                                 </SelectTrigger>
                               </FormControl>
