@@ -11,9 +11,6 @@ import { Button } from "@/components/ui/button";
 import { CalendarDays, X } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { toast as useToastToast } from "@/components/ui/use-toast";
-import { api } from "@/lib/api";
 
 // Local validation schema for consultation form
 const consultationSchema = z.object({
@@ -30,15 +27,11 @@ const consultationSchema = z.object({
 
 type ConsultationFormData = z.infer<typeof consultationSchema>;
 
-interface ConsultationFormProps {
-  onSubmit: (data: any) => void;
-  onClose: () => void;
-}
-
-export default function ConsultationForm({ onSubmit, onClose }: ConsultationFormProps) {
+export default function ConsultationForm() {
+  const [isOpen, setIsOpen] = useState(true);
   const { toast } = useToast();
   
-  const form = useForm({
+  const form = useForm<ConsultationFormData>({
     resolver: zodResolver(consultationSchema),
     defaultValues: {
       name: "",
@@ -53,17 +46,17 @@ export default function ConsultationForm({ onSubmit, onClose }: ConsultationForm
     }
   });
 
-  const handleSubmit = async (data: any) => {
+  const handleSubmit = async (data: ConsultationFormData) => {
     try {
-      const consultation = await apiRequest("POST", "/api/consultations", data);
-      const consultationData = await consultation.json();
+      const response = await apiRequest("POST", "/api/consultation", data);
+      const consultationData = await response.json();
       
       toast({
         title: "Consultation Request Submitted",
         description: "Your consultation request has been submitted successfully!"
       });
       
-      onSubmit(consultationData);
+      setIsOpen(false);
     } catch (error: any) {
       toast({
         title: "Error",
@@ -74,12 +67,12 @@ export default function ConsultationForm({ onSubmit, onClose }: ConsultationForm
   };
 
   return (
-    <Dialog open={true} onOpenChange={onClose}>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="font-playfair text-3xl font-bold text-charcoal flex items-center justify-between">
             Book Your Consultation
-            <Button variant="ghost" size="icon" onClick={onClose}>
+            <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
               <X className="h-6 w-6" />
             </Button>
           </DialogTitle>
@@ -264,7 +257,7 @@ export default function ConsultationForm({ onSubmit, onClose }: ConsultationForm
               <Button 
                 type="button" 
                 variant="outline" 
-                onClick={onClose}
+                onClick={() => setIsOpen(false)}
                 className="border-gray-300 text-gray-700 hover:bg-gray-50"
               >
                 Cancel

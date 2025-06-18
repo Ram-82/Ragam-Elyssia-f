@@ -20,7 +20,7 @@ interface PaymentCheckoutProps {
   onClose: () => void;
 }
 
-function CheckoutForm({ bookingData, onComplete }: { bookingData: any; onComplete: (data: any) => void }) {
+function CheckoutForm({ onComplete }: { onComplete: (data: any) => void }) {
   // const stripe = useStripe();
   // const elements = useElements();
   const { toast } = useToast();
@@ -85,7 +85,7 @@ function CheckoutForm({ bookingData, onComplete }: { bookingData: any; onComplet
       <Button 
         type="submit" 
         className="w-full gold-gradient text-white hover:shadow-lg transition-all duration-300"
-        disabled={!stripe || isProcessing}
+        disabled={isProcessing}
       >
         <Shield className="mr-2 h-4 w-4" />
         {isProcessing ? "Processing..." : "Complete Secure Payment"}
@@ -201,7 +201,7 @@ export default function PaymentCheckout({ bookingData, onComplete, onClose }: Pa
         </Card>
 
         {/* <Elements stripe={stripePromise} options={{ clientSecret }}> */}
-          <CheckoutForm bookingData={bookingData} onComplete={onComplete} />
+          <CheckoutForm onComplete={onComplete} />
         {/* </Elements> */}
         
         <div className="text-center mt-4">
