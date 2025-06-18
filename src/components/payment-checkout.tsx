@@ -1,6 +1,6 @@
+// import { loadStripe } from '@stripe/stripe-js';
+// import { Elements } from '@stripe/react-stripe-js';
 import { useState, useEffect } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements, PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,11 +8,11 @@ import { CreditCard, Shield, X } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 
-if (!import.meta.env.VITE_STRIPE_PUBLIC_KEY) {
-  throw new Error('Missing required Stripe key: VITE_STRIPE_PUBLIC_KEY');
-}
+// if (!import.meta.env.VITE_STRIPE_PUBLIC_KEY) {
+//   throw new Error('Missing required Stripe key: VITE_STRIPE_PUBLIC_KEY');
+// }
 
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+// const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 interface PaymentCheckoutProps {
   bookingData: any;
@@ -21,53 +21,53 @@ interface PaymentCheckoutProps {
 }
 
 function CheckoutForm({ bookingData, onComplete }: { bookingData: any; onComplete: (data: any) => void }) {
-  const stripe = useStripe();
-  const elements = useElements();
+  // const stripe = useStripe();
+  // const elements = useElements();
   const { toast } = useToast();
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!stripe || !elements) {
-      return;
-    }
+    // if (!stripe || !elements) {
+    //   return;
+    // }
 
     setIsProcessing(true);
 
     try {
-      const { error, paymentIntent } = await stripe.confirmPayment({
-        elements,
-        confirmParams: {
-          return_url: window.location.origin,
-        },
-        redirect: 'if_required'
-      });
+      // const { error, paymentIntent } = await stripe.confirmPayment({
+      //   elements,
+      //   confirmParams: {
+      //     return_url: window.location.origin,
+      //   },
+      //   redirect: 'if_required'
+      // });
 
-      if (error) {
-        toast({
-          title: "Payment Failed",
-          description: error.message,
-          variant: "destructive",
-        });
-      } else if (paymentIntent && paymentIntent.status === 'succeeded') {
-        // Confirm payment on backend
-        await apiRequest("POST", "/api/confirm-payment", {
-          paymentIntentId: paymentIntent.id,
-          consultationId: bookingData.id
-        });
+      // if (error) {
+      //   toast({
+      //     title: "Payment Failed",
+      //     description: error.message,
+      //     variant: "destructive",
+      //   });
+      // } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+      //   // Confirm payment on backend
+      //   await apiRequest("POST", "/api/confirm-payment", {
+      //     paymentIntentId: paymentIntent.id,
+      //     consultationId: bookingData.id
+      //   });
 
-        toast({
-          title: "Payment Successful",
-          description: "Your consultation has been confirmed!",
-        });
+      //   toast({
+      //     title: "Payment Successful",
+      //     description: "Your consultation has been confirmed!",
+      //   });
 
-        onComplete({
-          paymentIntentId: paymentIntent.id,
-          paymentStatus: 'paid',
-          amount: 5000
-        });
-      }
+      //   onComplete({
+      //     paymentIntentId: paymentIntent.id,
+      //     paymentStatus: 'paid',
+      //     amount: 5000
+      //   });
+      // }
     } catch (error: any) {
       toast({
         title: "Payment Error",
@@ -81,7 +81,7 @@ function CheckoutForm({ bookingData, onComplete }: { bookingData: any; onComplet
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <PaymentElement />
+      {/* <PaymentElement /> */}
       <Button 
         type="submit" 
         className="w-full gold-gradient text-white hover:shadow-lg transition-all duration-300"
@@ -200,9 +200,9 @@ export default function PaymentCheckout({ bookingData, onComplete, onClose }: Pa
           </CardContent>
         </Card>
 
-        <Elements stripe={stripePromise} options={{ clientSecret }}>
+        {/* <Elements stripe={stripePromise} options={{ clientSecret }}> */}
           <CheckoutForm bookingData={bookingData} onComplete={onComplete} />
-        </Elements>
+        {/* </Elements> */}
         
         <div className="text-center mt-4">
           <p className="text-xs text-gray-500 flex items-center justify-center">

@@ -1,6 +1,7 @@
+import { useState } from "react";
+import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { insertConsultationSchema } from "@shared/schema";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -10,6 +11,24 @@ import { Button } from "@/components/ui/button";
 import { CalendarDays, X } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { toast as useToastToast } from "@/components/ui/use-toast";
+import { api } from "@/lib/api";
+
+// Local validation schema for consultation form
+const consultationSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email"),
+  phone: z.string().min(10, "Phone number must be at least 10 digits"),
+  eventType: z.string().min(1, "Please select an event type"),
+  eventDate: z.string().min(1, "Please select an event date"),
+  guestCount: z.string().min(1, "Please enter guest count"),
+  location: z.string().min(5, "Location must be at least 5 characters"),
+  budget: z.string().min(1, "Please select a budget range"),
+  details: z.string().optional(),
+});
+
+type ConsultationFormData = z.infer<typeof consultationSchema>;
 
 interface ConsultationFormProps {
   onSubmit: (data: any) => void;
@@ -20,13 +39,14 @@ export default function ConsultationForm({ onSubmit, onClose }: ConsultationForm
   const { toast } = useToast();
   
   const form = useForm({
-    resolver: zodResolver(insertConsultationSchema),
+    resolver: zodResolver(consultationSchema),
     defaultValues: {
       name: "",
       email: "",
       phone: "",
       eventType: "",
       eventDate: "",
+      guestCount: "",
       location: "",
       budget: "",
       details: ""
