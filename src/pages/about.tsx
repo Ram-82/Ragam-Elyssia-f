@@ -174,7 +174,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Call to Action */}
+      {/* Call to Actions */}
       <section className="py-24 bg-charcoal text-ivory">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6 tracking-wide">
