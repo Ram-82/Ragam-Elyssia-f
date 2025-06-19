@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Calendar, Users, MapPin, Phone, Mail, MessageCircle } from "lucide-react";
+import { ArrowRight, Sparkles, Calendar, Users, MapPin, Phone, Mail } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Home() {
