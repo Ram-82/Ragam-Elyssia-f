@@ -48,7 +48,7 @@ export default function Consultation() {
 
   const onSubmit = async (data: ConsultationForm) => {
     try {
-      await apiRequest("POST", "/api/consultation", data);
+      await apiRequest("POST", `${API_BASE_URL}/api/consultation`, data);
       setIsSubmitted(true);
       toast({
         title: "Consultation Request Submitted",
