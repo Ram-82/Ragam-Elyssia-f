@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
+import { API_BASE_URL, apiRequest } from "@/lib/queryClient";
 
 // Local validation schema for contact form
 const contactSchema = z.object({
@@ -38,7 +38,7 @@ export default function Contact() {
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      await apiRequest("POST", "/api/contact", data);
+      await apiRequest("POST", `${API_BASE_URL}/api/contact`, data);
       setIsSubmitted(true);
       toast({
         title: "Message Sent",
