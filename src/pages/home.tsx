@@ -33,9 +33,13 @@ export default function Home() {
           href="https://wa.me/919632069662?text=Hello! I'm interested in Ragam Elyssia's luxury services."
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-luxury hover:shadow-luxury-lg transition-all duration-300"
+          aria-label="Chat on WhatsApp"
+          className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-luxury hover:shadow-luxury-lg transition-all duration-300 flex items-center justify-center border-4 border-white"
         >
-          <MessageCircle className="h-6 w-6" />
+          {/* WhatsApp SVG Icon */}
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+            <path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.832 4.584 2.236 6.364L4 29l7.818-2.236A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 21.818c-1.818 0-3.591-.545-5.091-1.545l-.364-.227-4.636 1.318 1.318-4.545-.236-.364C6.545 18.591 6 16.818 6 15c0-5.455 4.545-10 10-10s10 4.545 10 10-4.545 10-10 10zm5.273-7.273c-.273-.136-1.636-.818-1.891-.909-.255-.091-.436-.136-.618.136-.182.273-.709.909-.873 1.091-.164.182-.327.205-.6.068-.273-.136-1.155-.426-2.199-1.36-.813-.726-1.362-1.623-1.523-1.896-.159-.273-.017-.42.12-.555.123-.122.273-.318.409-.477.136-.159.182-.273.273-.455.091-.182.045-.341-.023-.477-.068-.136-.618-1.491-.845-2.045-.223-.536-.45-.463-.618-.472l-.527-.009c-.182 0-.477.068-.727.341-.25.273-.955.932-.955 2.273 0 1.341.977 2.636 1.113 2.818.136.182 1.927 2.945 4.682 4.009.655.282 1.165.45 1.563.577.656.209 1.253.18 1.726.109.527-.079 1.636-.668 1.868-1.312.232-.645.232-1.197.163-1.312-.068-.114-.25-.182-.523-.318z"/>
+          </svg>
         </a>
       </div>
 
