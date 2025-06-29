@@ -17,6 +17,8 @@ import carImage from "../assets/car.png"
 import YatchImage from "../assets/yatch.png"
 import luxuryImage from "../assets/luxury gift.png"
 
+const currentYear = new Date().getFullYear();
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-ivory">
@@ -809,7 +811,7 @@ export default function Home() {
           
           <div className="border-t border-gold/10 mt-12 pt-8 text-center">
             <p className="font-inter text-warm-gray text-sm">
-              © 2024 Ragam Elyssia. Crafted for the discerning.
+              Copyrights © { currentYear } Ragam Elyssia. Crafted for the discerning.
             </p>
           </div>
         </div>
