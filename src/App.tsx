@@ -9,6 +9,8 @@ import Services from "@/pages/services";
 import Consultation from "@/pages/consultation";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
+import Login from "@/pages/login";
+import Signup from "@/pages/signup";
 
 function Router() {
   return (
@@ -18,7 +20,10 @@ function Router() {
       <Route path="/services" component={Services} />
       <Route path="/consultation" component={Consultation} />
       <Route path="/contact" component={Contact} />
+      <Route path="/login" component={Login} />
+      <Route path="/signup" component={Signup} />
       <Route component={NotFound} />
+    
     </Switch>
   );
 }

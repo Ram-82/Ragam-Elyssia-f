@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Calendar, Users, MapPin, Phone, Mail } from "lucide-react";
+import { ArrowRight, Sparkles, Calendar, Users, MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Home() {
@@ -20,6 +20,16 @@ export default function Home() {
               <Link href="/consultation">
                 <Button className="bg-gold text-charcoal hover:bg-gold-dark transition-all duration-300 px-8 py-3 font-inter tracking-wide">
                   Book Consultation
+                </Button>
+              </Link>
+              <Link href="/login">
+              <Button className="bg-gold text-charcoal hover:bg-gold-dark transition-all duration-300 px-8 py-3 font-inter tracking-wide">
+                 Login
+                </Button>
+              </Link>
+              <Link href="/signup">
+              <Button className="bg-gold text-charcoal hover:bg-gold-dark transition-all duration-300 px-8 py-3 font-inter tracking-wide">
+               signup
                 </Button>
               </Link>
             </div>
