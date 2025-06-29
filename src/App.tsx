@@ -11,6 +11,7 @@ import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 import Login from "@/pages/login";
 import Signup from "@/pages/signup";
+import Dashboard from "@/pages/Dashboard";
 
 function Router() {
   return (
@@ -22,8 +23,8 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
+      <Route path="/dashboard" component={Dashboard} />
       <Route component={NotFound} />
-    
     </Switch>
   );
 }

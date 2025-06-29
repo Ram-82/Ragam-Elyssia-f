@@ -32,6 +32,7 @@ export default function Home() {
                signup
                 </Button>
               </Link>
+            
             </div>
           </div>
         </div>
