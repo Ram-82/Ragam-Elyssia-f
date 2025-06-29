@@ -1,6 +1,7 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+// import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { CalendarDays, Clock, Crown, Star } from "lucide-react";
 import { Link } from "wouter";
 
