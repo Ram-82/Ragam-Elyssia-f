@@ -55,35 +55,13 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-24 px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="mb-8">
-              <Sparkles className="text-gold mx-auto h-12 w-12 mb-6" />
-            </div>
-            <h1 className="font-playfair text-6xl md:text-7xl lg:text-8xl font-bold text-charcoal mb-8 leading-tight tracking-wide">
-              Ultra-Luxury
-              <span className="block text-gold italic">Event Planning</span>
-              <span className="block text-charcoal">&amp; Concierge Services</span>
-            </h1>
-            <p className="font-cormorant text-xl md:text-2xl text-warm-gray mb-12 max-w-2xl mx-auto leading-relaxed">
-              Where dreams meet flawless execution in the realm of extraordinary experiences
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Link href="/services">
-                <Button size="lg" className="bg-charcoal text-ivory hover:bg-charcoal/90 px-12 py-4 text-lg font-inter tracking-wide">
-                  View Services <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link href="/consultation">
-                <Button size="lg" variant="outline" className="border-2 border-gold text-charcoal hover:bg-gold hover:border-gold px-12 py-4 text-lg font-inter tracking-wide">
-                  Book Consultation
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section className="relative from-gray-300 via-gray-400 to-gray-600 text-center py-32 px-6">
+        <div className="max-w-4xl mx-auto"> <div className="mb-6"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-crown text-gold mx-auto h-20 w-20 mb-8 animate-luxury-float" data-replit-metadata="client/src/pages/home.tsx:105:12" data-component-name="Crown"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path><path d="M5 21h14"></path></svg></div> <h1 className="font-serif text-6xl md:text-7xl font-bold mb-4"> The Next Name of <span className="italic text-yellow-400">Ultra Luxury</span> </h1> <p className=" text-xl md:text-2xl mb-6"> Private Journeys. Legendary Moments. </p> <p className=" text-base md:text-lg mb-12 max-w-xl mx-auto"> Where discerning individuals discover experiences that transcend the ordinary </p> <button className="bg-yellow-400 text-black font-semibold px-8 py-3 rounded shadow hover:bg-yellow-500 transition"> Begin Your Experience </button><div className="mt-12"> <div data-replit-metadata="client/src/pages/home.tsx:158:8" data-component-name="motion.div" className="absolute bottom-8 left-1/2 transform -translate-x-1/2" style={{opacity: 1}}><div data-replit-metadata="client/src/pages/home.tsx:164:10" data-component-name="motion.div" style={{transform: 'translateY(9.94314px)'}}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down text-gold h-8 w-8" data-replit-metadata="client/src/pages/home.tsx:168:12" data-component-name="ChevronDown"><path d="m6 9 6 6 6-6"></path></svg></div></div> </div> </div> </section>
+
+   
+    
+
+
 
       {/* Philosophy Section */}
       <section className="py-24 bg-white">
@@ -122,7 +100,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center group">
               <div className="bg-white p-8 rounded-lg shadow-luxury hover:shadow-luxury-lg transition-all duration-500 group-hover:-translate-y-1">
-                <Users className="text-gold h-12 w-12 mx-auto mb-6" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#d4af37" className="text-gold mx-auto h-12 w-12 mb-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0 0c-3.426 0-6.214-2.03-7.447-4.877M12 19.253c3.426 0 6.214-2.03 7.447-4.877M12 6.253c1.245-.007 2.48.42 3.507 1.379 1.533 1.423 2.043 3.59 1.07 5.518a6.916 6.916 0 01-1.07 1.518c.01.109.02.218.02.329 0 3.31-2.91 6-6.5 6s-6.5-2.69-6.5-6c0-.11.01-.22.02-.329a6.916 6.916 0 01-1.07-1.518c-.974-1.928-.463-4.095 1.07-5.518 1.027-.96 2.262-1.386 3.507-1.38z" />
+                </svg>
                 <h3 className="font-playfair text-xl font-semibold text-charcoal mb-4 tracking-wide">Private Events</h3>
                 <p className="font-inter text-warm-gray text-sm leading-relaxed mb-6">
                   Intimate celebrations crafted with meticulous attention to every detail
