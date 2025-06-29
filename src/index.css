@@ -133,6 +133,12 @@
     border-color: hsl(var(--charcoal));
   }
   
+  .text-gradient-gold {
+    background: linear-gradient(to right, hsl(var(--gold)), hsl(var(--gold-dark)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
   /* Luxury Spacing */
   .luxury-spacing {
     letter-spacing: 0.05em;
