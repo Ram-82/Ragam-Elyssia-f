@@ -9,8 +9,8 @@ import Services from "@/pages/services";
 import Consultation from "@/pages/consultation";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
-import Login from "@/pages/login";
-import Signup from "@/pages/signup";
+import Login from "@/pages/loginSignupPage";
+
 import Dashboard from "@/pages/Dashboard";
 
 function Router() {
@@ -22,7 +22,7 @@ function Router() {
       <Route path="/consultation" component={Consultation} />
       <Route path="/contact" component={Contact} />
       <Route path="/login" component={Login} />
-      <Route path="/signup" component={Signup} />
+ 
       <Route path="/dashboard" component={Dashboard} />
       <Route component={NotFound} />
     </Switch>

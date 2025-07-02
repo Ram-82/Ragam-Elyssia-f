@@ -12,10 +12,10 @@ import amanImage from '../assets/aman.png';
 import louisImage from "../assets/louis.png";
 import astonImage from "../assets/aston.png";
 import privateJetImage from "../assets/privatejet.png";
-import Experiece from "../assets/experience.png";
+import timeImage from "../assets/time.png";
 import carImage from "../assets/car.png"
 import YatchImage from "../assets/yatch.png"
-import luxuryImage from "../assets/luxury gift.png"
+import luxuryImage from "../assets/luxury.png"
 
 const currentYear = new Date().getFullYear();
 
@@ -44,11 +44,7 @@ export default function Home() {
                  Login
                 </Button>
               </Link>
-              <Link href="/signup">
-              <Button className="bg-gold text-charcoal hover:bg-gold-dark transition-all duration-300 px-8 py-3 font-inter tracking-wide">
-               signup
-                </Button>
-              </Link>
+            
             
             </div>
           </div>
@@ -73,7 +69,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative from-gray-300 via-gray-400 to-gray-600 text-center py-32 px-6">
-        <div className="max-w-4xl mx-auto"> <div className="mb-6"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-crown text-gold mx-auto h-20 w-20 mb-8 animate-luxury-float" data-replit-metadata="client/src/pages/home.tsx:105:12" data-component-name="Crown"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path><path d="M5 21h14"></path></svg></div> <h1 className="font-serif text-6xl md:text-7xl font-bold mb-4"> The Next Name of <span className="italic text-yellow-400">Ultra Luxury</span> </h1> <p className=" text-xl md:text-2xl mb-6"> Private Journeys. Legendary Moments. </p> <p className=" text-base md:text-lg mb-12 max-w-xl mx-auto"> Where discerning individuals discover experiences that transcend the ordinary </p> <button className="bg-yellow-400 text-black font-semibold px-8 py-3 rounded shadow hover:bg-yellow-500 transition"> Begin Your Experience </button><div className="mt-12"> <div data-replit-metadata="client/src/pages/home.tsx:158:8" data-component-name="motion.div" className="absolute bottom-8 left-1/2 transform -translate-x-1/2" style={{opacity: 1}}><div data-replit-metadata="client/src/pages/home.tsx:164:10" data-component-name="motion.div" style={{transform: 'translateY(9.94314px)'}}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down text-gold h-8 w-8" data-replit-metadata="client/src/pages/home.tsx:168:12" data-component-name="ChevronDown"><path d="m6 9 6 6 6-6"></path></svg></div></div> </div> </div>
+        <div className="max-w-4xl mx-auto"> <div className="mb-6"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-crown text-gold mx-auto h-20 w-20 mb-8 animate-luxury-float" data-replit-metadata="client/src/pages/home.tsx:105:12" data-component-name="Crown"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path><path d="M5 21h14"></path></svg></div> <h1 className="font-cormorant text-8xl md:text-7xl font-bold mb-4"> The Next Name of <span className="italic text-yellow-400">Ultra Luxury</span> </h1> <p className=" text-xl md:text-2xl mb-6"> Private Journeys. Legendary Moments. </p> <p className=" font-cormorant text-lg md:text-2xl mb-12 max-w-xl mx-auto"> Where discerning individuals discover experiences that transcend the ordinary </p> <button className="bg-gold font-cormorant text-black md:text-2xl font-semibold px-8 py-3 rounded shadow hover:bg-yellow-500 transition"> Begin Your Experience </button><div className="mt-12"> <div data-replit-metadata="client/src/pages/home.tsx:158:8" data-component-name="motion.div" className="absolute bottom-8 left-1/2 transform -translate-x-1/2" style={{opacity: 1}}><div data-replit-metadata="client/src/pages/home.tsx:164:10" data-component-name="motion.div" style={{transform: 'translateY(9.94314px)'}}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down text-gold h-8 w-8" data-replit-metadata="client/src/pages/home.tsx:168:12" data-component-name="ChevronDown"><path d="m6 9 6 6 6-6"></path></svg></div></div> </div> </div>
          </section>
 
     {/* Experience Journey Section */}
@@ -212,7 +208,7 @@ export default function Home() {
                 <div 
                   className="h-96 rounded-lg shadow-luxury overflow-hidden bg-cover bg-center"
                   style={{
-                    backgroundImage: `url(${Experiece})`,
+                    backgroundImage: `url(${timeImage})`,
                   }}
                 >
                   <div className="h-full bg-gradient-to-t from-black/50 to-transparent flex items-end p-8">
@@ -713,7 +709,7 @@ export default function Home() {
           
           <h2 className="font-cormorant text-4xl md:text-6xl lg:text-7xl font-bold text-black mb-8 tracking-wide animate-fade-in-up text-luxury-shadow">
             Craft Legacy Moments,
-            <span className="block text-gradient-gold italic">Together</span>
+            <span className="block w-full text-gradient-gold italic leading-[1.2] pb-2">Together</span>
           </h2>
           
           <p className="font-dm-sans text-xl md:text-2xl mb-4 max-w-3xl mx-auto text-cream/90 leading-relaxed animate-fade-in-up">
@@ -733,7 +729,7 @@ export default function Home() {
               </Button>
             </Link>
             <Link href="/partners">
-              <Button size="lg" variant="outline" className="border-2 border-ivory/30 text-ivory hover:bg-ivory/10 hover:border-ivory px-16 py-6 text-xl font-dm-sans tracking-wide luxury-button transform hover:scale-105 transition-all duration-300">
+              <Button size="lg" className="bg-gold text-charcoal hover:bg-gold/90 px-16 py-6 text-xl font-dm-sans tracking-wide luxury-button shadow-luxury-lg transform hover:scale-105 transition-all duration-300">
                 Partner With Us
               </Button>
             </Link>
@@ -743,7 +739,7 @@ export default function Home() {
             <Card className="luxury-card bg-ivory/5 backdrop-blur-sm border-gold/20 hover:border-gold/40 text-center">
               <CardContent className="p-8">
                 <Phone className="text-gold mx-auto h-8 w-8 mb-4" />
-                <h3 className="font-cormorant text-xl font-semibold text-ivory mb-2">Direct Access</h3>
+                <h3 className="font-cormorant text-black text-xl font-semibold  mb-2">Direct Access</h3>
                 <p className="font-dm-sans text-cream/80 text-sm">+91 9632069662</p>
               </CardContent>
             </Card>
@@ -751,7 +747,7 @@ export default function Home() {
             <Card className="luxury-card bg-ivory/5 backdrop-blur-sm border-gold/20 hover:border-gold/40 text-center">
               <CardContent className="p-8">
                 <Mail className="text-gold mx-auto h-8 w-8 mb-4" />
-                <h3 className="font-cormorant text-xl font-semibold text-ivory mb-2">Private Correspondence</h3>
+                <h3 className="font-cormorant  text-xl font-semibold text-black mb-2">Private Correspondence</h3>
                 <p className="font-dm-sans text-cream/80 text-sm">ragamelyssia@gmail.com</p>
               </CardContent>
             </Card>
@@ -759,7 +755,7 @@ export default function Home() {
             <Card className="luxury-card bg-ivory/5 backdrop-blur-sm border-gold/20 hover:border-gold/40 text-center">
               <CardContent className="p-8">
                 <MessageCircle className="text-gold mx-auto h-8 w-8 mb-4" />
-                <h3 className="font-cormorant text-xl font-semibold text-ivory mb-2">Instant Connect</h3>
+                <h3 className="font-cormorant text-xl font-semibold text-black mb-2">Instant Connect</h3>
                 <p className="font-dm-sans text-cream/80 text-sm">WhatsApp Available</p>
               </CardContent>
             </Card>
