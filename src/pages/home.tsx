@@ -620,7 +620,7 @@ export default function Home() {
 
      
 
-      <section className="py-24 bg-white">
+     <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-cormorant text-4xl md:text-5xl font-bold text-charcoal mb-6 tracking-wide">
@@ -630,10 +630,11 @@ export default function Home() {
               Bespoke experiences tailored to discerning clientele
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center group">
-              <div className="bg-white p-8 rounded-lg shadow-luxury hover:shadow-luxury-lg transition-all duration-500 group-hover:-translate-y-1">
+      
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+            {/* Private Events */}
+            <div className="text-center group h-full flex">
+              <div className="bg-white p-8 rounded-lg shadow-luxury hover:shadow-luxury-lg transition-all duration-500 group-hover:-translate-y-1 flex flex-col justify-between w-full">
                 <Users className="text-gold h-12 w-12 mx-auto mb-6" />
                 <h3 className="font-playfair text-xl font-semibold text-charcoal mb-4 tracking-wide">Private Events</h3>
                 <p className="font-inter text-warm-gray text-sm leading-relaxed mb-6">
@@ -646,9 +647,10 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-
-            <div className="text-center group">
-              <div className="bg-white p-8 rounded-lg shadow-luxury hover:shadow-luxury-lg transition-all duration-500 group-hover:-translate-y-1">
+      
+            {/* Fashion & Brand Activations */}
+            <div className="text-center group h-full flex">
+              <div className="bg-white p-8 rounded-lg shadow-luxury hover:shadow-luxury-lg transition-all duration-500 group-hover:-translate-y-1 flex flex-col justify-between w-full">
                 <Sparkles className="text-gold h-12 w-12 mx-auto mb-6" />
                 <h3 className="font-playfair text-xl font-semibold text-charcoal mb-4 tracking-wide">Fashion &amp; Brand Activations</h3>
                 <p className="font-inter text-warm-gray text-sm leading-relaxed mb-6">
@@ -661,9 +663,10 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-
-            <div className="text-center group">
-              <div className="bg-white p-8 rounded-lg shadow-luxury hover:shadow-luxury-lg transition-all duration-500 group-hover:-translate-y-1">
+      
+            {/* Concierge Experiences */}
+            <div className="text-center group h-full flex">
+              <div className="bg-white p-8 rounded-lg shadow-luxury hover:shadow-luxury-lg transition-all duration-500 group-hover:-translate-y-1 flex flex-col justify-between w-full">
                 <Calendar className="text-gold h-12 w-12 mx-auto mb-6" />
                 <h3 className="font-playfair text-xl font-semibold text-charcoal mb-4 tracking-wide">Concierge Experiences</h3>
                 <p className="font-inter text-warm-gray text-sm leading-relaxed mb-6">
@@ -676,9 +679,10 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-
-            <div className="text-center group">
-              <div className="bg-white p-8 rounded-lg shadow-luxury hover:shadow-luxury-lg transition-all duration-500 group-hover:-translate-y-1">
+      
+            {/* Destination Planning */}
+            <div className="text-center group h-full flex">
+              <div className="bg-white p-8 rounded-lg shadow-luxury hover:shadow-luxury-lg transition-all duration-500 group-hover:-translate-y-1 flex flex-col justify-between w-full">
                 <MapPin className="text-gold h-12 w-12 mx-auto mb-6" />
                 <h3 className="font-playfair text-xl font-semibold text-charcoal mb-4 tracking-wide">Destination Planning</h3>
                 <p className="font-inter text-warm-gray text-sm leading-relaxed mb-6">
@@ -694,6 +698,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
 
       {/* Cinematic CTA Section */}
       <section className="relative py-32 bg-gradient-to-br from-charcoal via-charcoal/95 to-charcoal/90 text-center overflow-hidden">
