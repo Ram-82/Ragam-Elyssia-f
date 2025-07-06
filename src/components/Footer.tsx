@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Phone, Mail, MapPin } from "lucide-react";
+import logo from '../assets/logo.png';
 
 const currentYear = new Date().getFullYear();
 
@@ -9,6 +10,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
+            <img src={logo} alt="Ragam Elyssia Logo" className="h-8 w-auto ml-3 object-contain drop-shadow-md inline-block align-middle" />
+            {/* <span className="font-playfair text-2xl font-bold text-charcoal tracking-wide">Ragam Elyssia</span> */}
             <div className="font-playfair text-2xl font-bold text-charcoal mb-4 tracking-wide">
               Ragam Elyssia
             </div>

@@ -156,15 +156,22 @@ export default function LoginSignupPage() {
     <>
       <ScrollToTop />
       <Header />
-      <div className="min-h-screen bg-gradient-to-br from-stone-50 via-amber-50 to-stone-100 flex items-center justify-center p-4 pt-28 sm:pt-32 relative w-full">
+      {/* <div className="min-h-screen bg-gold from-stone-50 via-amber-50 to-stone-100 flex items-center justify-center p-4 pt-28 sm:pt-32 relative w-full"> */}
+      <div className="relative min-h-screen flex flex-col justify-center items-center text-center pt-12 sm:pt-16 pb-8 px-4 sm:px-6 bg-[#FAF7F2] from-stone-50 via-amber-50 to-stone-100 flex items-center justify-center p-4 pt-28 sm:pt-32 relative w-full"
+        style={{
+          backgroundImage: 'url("https://www.transparenttextures.com/patterns/white-diamond-dark.png")'
+        }}>
+          <div className="absolute inset-0 bg-[#FAF7F2] opacity-75 pointer-events-none z-0"></div>
         
       {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5 overflow-hidden pointer-events-none select-none z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-amber-200 to-stone-300 transform rotate-45 scale-150"></div>
-      </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-200 to-stone-300 transform rotate-45 scale-150"></div>
+          
+        </div>
+
         <div className="relative w-full max-w-md z-10">
         {/* Main Container */}
-          <div className="bg-white/80 backdrop-blur-sm shadow-2xl rounded-3xl border border-amber-100/50 overflow-hidden w-full max-w-full">
+          <div className="bg-white/80 backdrop-blur-sm shadow-2xl rounded-3xl border border-amber-100/50 overflow-hidden w-full max-w-full md:max-w-lg lg:max-w-xl">
           {/* Header */}
             <div className="p-4 sm:p-8 pb-4">
             <div className="text-center mb-8">

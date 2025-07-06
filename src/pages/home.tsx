@@ -45,8 +45,18 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center text-center from-gray-300 via-gray-400 to-gray-600 pt-12 sm:pt-16 pb-8 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto">
+      {/* <section className="relative min-h-screen flex flex-col justify-center items-center text-center from-gray-300 
+      via-gray-400 to-gray-600 pt-12 sm:pt-16 pb-8 px-4 sm:px-6"></section> */}
+      <section
+        className="relative min-h-screen flex flex-col justify-center items-center text-center pt-12 sm:pt-16 pb-8 px-4 sm:px-6 bg-[#FAF7F2]"
+        style={{
+          backgroundImage: 'url("https://www.transparenttextures.com/patterns/white-diamond-dark.png")'
+        }}
+      >
+        {/* White overlay to lighten the pattern */}
+        <div className="absolute inset-0 bg-[#FAF7F2] opacity-75 pointer-events-none z-0"></div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto">
           <div className="mb-8">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-crown text-gold mx-auto h-28 w-28 mb-8 animate-luxury-float"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path><path d="M5 21h14"></path></svg>
           </div>
@@ -59,7 +69,9 @@ export default function Home() {
           </p>
           <button className="bg-gold font-cormorant text-black text-lg sm:text-xl md:text-2xl font-semibold px-6 sm:px-8 py-3 rounded shadow hover:bg-yellow-500 transition">Begin Your Experience</button>
         </div>
-      </section>
+         </section>
+
+      
       {/* Down Arrow pinned to bottom center of hero section */}
       <div className="absolute left-1/2 bottom-4 -translate-x-1/2" style={{opacity: 1}}>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down text-gold h-8 w-8"><path d="m6 9 6 6 6-6"></path></svg>
