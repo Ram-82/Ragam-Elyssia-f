@@ -6,6 +6,7 @@
 # testing
 
 .env
+.env.example
 # testing
 /coverage
 

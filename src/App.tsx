@@ -10,6 +10,8 @@ import Consultation from "@/pages/consultation";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 import Login from "@/pages/loginSignupPage";
+import ForgotPassword from '@/pages/forgotPassword';
+import ResetPassword from '@/pages/resetPassword';
 
 import Dashboard from "@/pages/Dashboard";
 
@@ -22,7 +24,8 @@ function Router() {
       <Route path="/consultation" component={Consultation} />
       <Route path="/contact" component={Contact} />
       <Route path="/login" component={Login} />
- 
+      <Route path="/forgot-password" component={ForgotPassword} />
+      <Route path="/reset-password" component={ResetPassword} />
       <Route path="/dashboard" component={Dashboard} />
       <Route component={NotFound} />
     </Switch>

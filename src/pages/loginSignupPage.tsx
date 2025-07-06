@@ -1,19 +1,20 @@
 import React,{ useState } from 'react';
-import { Eye, EyeOff, Mail, Lock, User, Phone, MapPin } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
 import { Link } from 'wouter';
+import { API_BASE_URL, apiRequest } from '@/lib/queryClient';
+import { useToast } from '@/hooks/use-toast';
 
 const LoginSignupPage = () => {
   const [activeTab, setActiveTab] = useState('login');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  
+  const { toast } = useToast();
   // Form states
   const [loginForm, setLoginForm] = useState({
     email: '',
     password: ''
   });
-  
   const [signupForm, setSignupForm] = useState({
     fullName: '',
     email: '',
@@ -23,24 +24,121 @@ const LoginSignupPage = () => {
 
   const handleLoginSubmit = async () => {
     setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const res = await apiRequest('POST', `${API_BASE_URL}/api/login`, {
+        email: loginForm.email,
+        password: loginForm.password
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        toast({
+          title: 'Login Successful',
+          description: 'Welcome back!',
+        });
+        localStorage.setItem('token', data.token);
+        // Optionally redirect or update UI here
+      } else {
+        toast({
+          title: 'Error',
+          description: data.message || 'Login failed',
+          variant: 'destructive',
+        });
+      }
+    } catch (err: any) {
+      // Try to parse error message from backend if available
+      if (err instanceof Error && err.message) {
+        let msg = err.message;
+        // Try to extract backend error message from fetch error
+        try {
+          const parsed = JSON.parse(msg.split(':').slice(1).join(':'));
+          if (parsed && parsed.message) {
+            toast({
+              title: 'Error',
+              description: parsed.message,
+              variant: 'destructive',
+            });
+            setIsLoading(false);
+            return;
+          }
+        } catch {}
+        toast({
+          title: 'Network Error',
+          description: msg,
+          variant: 'destructive',
+        });
+      } else {
+        toast({
+          title: 'Network Error',
+          description: 'Please try again.',
+          variant: 'destructive',
+        });
+      }
+    } finally {
       setIsLoading(false);
-      console.log('Login submitted:', loginForm);
-    }, 1500);
+    }
   };
 
   const handleSignupSubmit = async () => {
     if (signupForm.password !== signupForm.confirmPassword) {
-      alert('Passwords do not match');
+      toast({
+        title: 'Error',
+        description: 'Passwords do not match',
+        variant: 'destructive',
+      });
       return;
     }
     setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const res = await apiRequest('POST', `${API_BASE_URL}/api/signup`, {
+        fullName: signupForm.fullName,
+        email: signupForm.email,
+        password: signupForm.password
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        toast({
+          title: 'Signup Successful',
+          description: 'You can now log in.',
+        });
+        setSignupForm({ fullName: '', email: '', password: '', confirmPassword: '' });
+        setActiveTab('login');
+      } else {
+        toast({
+          title: 'Error',
+          description: data.message || 'Signup failed',
+          variant: 'destructive',
+        });
+      }
+    } catch (err: any) {
+      if (err instanceof Error && err.message) {
+        let msg = err.message;
+        try {
+          const parsed = JSON.parse(msg.split(':').slice(1).join(':'));
+          if (parsed && parsed.message) {
+            toast({
+              title: 'Error',
+              description: parsed.message,
+              variant: 'destructive',
+            });
+            setIsLoading(false);
+            return;
+          }
+        } catch {}
+        toast({
+          title: 'Network Error',
+          description: msg,
+          variant: 'destructive',
+        });
+      } else {
+        toast({
+          title: 'Network Error',
+          description: 'Please try again.',
+          variant: 'destructive',
+        });
+      }
+    } finally {
       setIsLoading(false);
-      console.log('Signup submitted:', signupForm);
-    }, 1500);
+    }
   };
 
   const updateLoginForm = (field: string, value: string) => {
@@ -60,7 +158,6 @@ const LoginSignupPage = () => {
       <div className="absolute inset-0 opacity-5 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-amber-200 to-stone-300 transform rotate-45 scale-150"></div>
       </div>
-      
       <div className="relative w-full max-w-md">
         {/* Main Container */}
         <div className="bg-white/80 backdrop-blur-sm shadow-2xl rounded-3xl border border-amber-100/50 overflow-hidden">
@@ -72,7 +169,6 @@ const LoginSignupPage = () => {
               </h1>
               <p className="text-stone-600 text-sm font-light">Experience elegance in every interaction</p>
             </div>
-            
             {/* Tab Navigation */}
             <div className="flex bg-stone-100/50 rounded-2xl p-1 mb-8">
               <button
@@ -97,10 +193,9 @@ const LoginSignupPage = () => {
               </button>
             </div>
           </div>
-
           {/* Forms Container */}
           <div className="px-8 pb-8">
-            {activeTab === 'login' ? (
+            {activeTab === 'login' && (
               // Login Form
               <div className="space-y-6">
                 <div className="space-y-4">
@@ -110,6 +205,8 @@ const LoginSignupPage = () => {
                     </div>
                     <input
                       type="email"
+                      name="email"
+                      autoComplete="username"
                       value={loginForm.email}
                       onChange={(e) => updateLoginForm('email', e.target.value)}
                       placeholder="Email address"
@@ -117,13 +214,14 @@ const LoginSignupPage = () => {
                       required
                     />
                   </div>
-                  
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                       <Lock className="h-5 w-5 text-stone-400" />
                     </div>
                     <input
                       type={showPassword ? 'text' : 'password'}
+                      name="password"
+                      autoComplete="current-password"
                       value={loginForm.password}
                       onChange={(e) => updateLoginForm('password', e.target.value)}
                       placeholder="Password"
@@ -139,13 +237,11 @@ const LoginSignupPage = () => {
                     </button>
                   </div>
                 </div>
-                
                 <div className="flex justify-end">
-                  <a href="#" className="text-sm text-amber-600 hover:text-amber-700 font-medium">
+                  <a href="/forgot-password" className="text-sm text-amber-600 hover:text-amber-700 font-medium transition-colors">
                     Forgot Password?
                   </a>
                 </div>
-                
                 <button
                   type="button"
                   onClick={handleLoginSubmit}
@@ -162,7 +258,8 @@ const LoginSignupPage = () => {
                   )}
                 </button>
               </div>
-            ) : (
+            )}
+            {activeTab === 'signup' && (
               // Signup Form
               <div className="space-y-6">
                 <div className="space-y-4">
@@ -172,6 +269,8 @@ const LoginSignupPage = () => {
                     </div>
                     <input
                       type="text"
+                      name="fullName"
+                      autoComplete="name"
                       value={signupForm.fullName}
                       onChange={(e) => updateSignupForm('fullName', e.target.value)}
                       placeholder="Full Name"
@@ -179,13 +278,14 @@ const LoginSignupPage = () => {
                       required
                     />
                   </div>
-                  
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                       <Mail className="h-5 w-5 text-stone-400" />
                     </div>
                     <input
                       type="email"
+                      name="email"
+                      autoComplete="email"
                       value={signupForm.email}
                       onChange={(e) => updateSignupForm('email', e.target.value)}
                       placeholder="Email address"
@@ -193,13 +293,14 @@ const LoginSignupPage = () => {
                       required
                     />
                   </div>
-                  
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                       <Lock className="h-5 w-5 text-stone-400" />
                     </div>
                     <input
                       type={showPassword ? 'text' : 'password'}
+                      name="password"
+                      autoComplete="new-password"
                       value={signupForm.password}
                       onChange={(e) => updateSignupForm('password', e.target.value)}
                       placeholder="Password"
@@ -214,13 +315,14 @@ const LoginSignupPage = () => {
                       {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                     </button>
                   </div>
-                  
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                       <Lock className="h-5 w-5 text-stone-400" />
                     </div>
                     <input
                       type={showConfirmPassword ? 'text' : 'password'}
+                      name="confirmPassword"
+                      autoComplete="new-password"
                       value={signupForm.confirmPassword}
                       onChange={(e) => updateSignupForm('confirmPassword', e.target.value)}
                       placeholder="Confirm Password"
@@ -236,7 +338,6 @@ const LoginSignupPage = () => {
                     </button>
                   </div>
                 </div>
-                
                 <button
                   type="button"
                   onClick={handleSignupSubmit}
@@ -256,13 +357,8 @@ const LoginSignupPage = () => {
             )}
           </div>
         </div>
-        
-    
-      
       </div>        
     </div>
-
-    
   );
 };
 
