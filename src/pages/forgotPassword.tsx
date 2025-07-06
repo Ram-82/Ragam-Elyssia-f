@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { API_BASE_URL, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');
@@ -59,41 +62,46 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-stone-50 via-amber-50 to-stone-100 flex items-center justify-center p-4">
-      <div className="relative w-full max-w-md">
-        <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-stone-200/50 p-8 space-y-8">
-          <div className="text-center space-y-2">
-            <h1 className="text-3xl font-light text-stone-800 mb-2" style={{fontFamily: 'Playfair Display, serif'}}>
-              Forgot Password
-            </h1>
-            <p className="text-stone-500 text-sm font-light">
-              Enter your email and we'll send you a reset link.
-            </p>
-          </div>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-stone-700 block">Email</label>
-              <input
-                type="email"
-                name="email"
-                autoComplete="email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                className="w-full px-4 py-4 bg-stone-50/80 border border-stone-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-200 focus:border-transparent text-stone-800 placeholder-stone-400 transition-all duration-200"
-                placeholder="Enter your email"
-                required
-              />
+    <>
+      <ScrollToTop />
+      <Header />
+      <div className="min-h-screen bg-gradient-to-br from-stone-50 via-amber-50 to-stone-100 flex items-center justify-center p-4">
+        <div className="relative w-full max-w-md">
+          <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-stone-200/50 p-8 space-y-8">
+            <div className="text-center space-y-2">
+              <h1 className="text-3xl font-light text-stone-800 mb-2" style={{fontFamily: 'Playfair Display, serif'}}>
+                Forgot Password
+              </h1>
+              <p className="text-stone-500 text-sm font-light">
+                Enter your email to receive a password reset link.
+              </p>
             </div>
-            <button
-              type="submit"
-              className={`w-full bg-gradient-to-r from-amber-200 to-stone-300 hover:from-amber-300 hover:to-stone-400 text-stone-800 font-medium py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl shadow-lg text-center ${loading ? 'opacity-50 pointer-events-none' : ''}`}
-              disabled={loading}
-            >
-              {loading ? 'Sending...' : 'Send Reset Link'}
-            </button>
-          </form>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-stone-700 block">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  className="w-full px-4 py-4 bg-stone-50/80 border border-stone-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-200 focus:border-transparent text-stone-800 placeholder-stone-400 transition-all duration-200"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                className={`w-full bg-gradient-to-r from-amber-200 to-stone-300 hover:from-amber-300 hover:to-stone-400 text-stone-800 font-medium py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl shadow-lg text-center ${loading ? 'opacity-50 pointer-events-none' : ''}`}
+                disabled={loading}
+              >
+                {loading ? 'Sending...' : 'Send Reset Link'}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 } 

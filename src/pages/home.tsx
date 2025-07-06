@@ -16,40 +16,17 @@ import timeImage from "../assets/time.png";
 import carImage from "../assets/car.png"
 import YatchImage from "../assets/yatch.png"
 import luxuryImage from "../assets/luxury.png"
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const currentYear = new Date().getFullYear();
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-ivory">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-ivory/95 backdrop-blur-sm z-50 border-b border-gold/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
-            <div className="font-playfair text-2xl font-bold text-charcoal tracking-wide">
-              Ragam Elyssia
-            </div>
-            <div className="hidden md:flex items-center space-x-12">
-              <Link href="/" className="text-warm-gray hover:text-charcoal transition-colors font-inter tracking-wide text-sm">Home</Link>
-              <Link href="/about" className="text-warm-gray hover:text-charcoal transition-colors font-inter tracking-wide text-sm">About</Link>
-              <Link href="/services" className="text-warm-gray hover:text-charcoal transition-colors font-inter tracking-wide text-sm">Services</Link>
-              <Link href="/contact" className="text-warm-gray hover:text-charcoal transition-colors font-inter tracking-wide text-sm">Contact</Link>
-              <Link href="/consultation">
-                <Button className="bg-gold text-charcoal hover:bg-gold-dark transition-all duration-300 px-8 py-3 font-inter tracking-wide">
-                  Book Consultation
-                </Button>
-              </Link>
-              <Link href="/login">
-              <Button className="bg-gold text-charcoal hover:bg-gold-dark transition-all duration-300 px-8 py-3 font-inter tracking-wide">
-                 Login
-                </Button>
-              </Link>
-            
-            
-            </div>
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-ivory overflow-x-hidden">
+      <ScrollToTop />
+      <Header />
 
       {/* WhatsApp Floating Button */}
       <div className="fixed bottom-8 right-8 z-50">
@@ -68,9 +45,25 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative from-gray-300 via-gray-400 to-gray-600 text-center py-32 px-6">
-        <div className="max-w-4xl mx-auto"> <div className="mb-6"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-crown text-gold mx-auto h-20 w-20 mb-8 animate-luxury-float" data-replit-metadata="client/src/pages/home.tsx:105:12" data-component-name="Crown"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path><path d="M5 21h14"></path></svg></div> <h1 className="font-cormorant text-8xl md:text-7xl font-bold mb-4"> The Next Name of <span className="italic text-yellow-400">Ultra Luxury</span> </h1> <p className=" text-xl md:text-2xl mb-6"> Private Journeys. Legendary Moments. </p> <p className=" font-cormorant text-lg md:text-2xl mb-12 max-w-xl mx-auto"> Where discerning individuals discover experiences that transcend the ordinary </p> <button className="bg-gold font-cormorant text-black md:text-2xl font-semibold px-8 py-3 rounded shadow hover:bg-yellow-500 transition"> Begin Your Experience </button><div className="mt-12"> <div data-replit-metadata="client/src/pages/home.tsx:158:8" data-component-name="motion.div" className="absolute bottom-8 left-1/2 transform -translate-x-1/2" style={{opacity: 1}}><div data-replit-metadata="client/src/pages/home.tsx:164:10" data-component-name="motion.div" style={{transform: 'translateY(9.94314px)'}}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down text-gold h-8 w-8" data-replit-metadata="client/src/pages/home.tsx:168:12" data-component-name="ChevronDown"><path d="m6 9 6 6 6-6"></path></svg></div></div> </div> </div>
-         </section>
+      <section className="relative min-h-screen flex flex-col justify-center items-center text-center from-gray-300 via-gray-400 to-gray-600 pt-12 sm:pt-16 pb-8 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-8">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-crown text-gold mx-auto h-28 w-28 mb-8 animate-luxury-float"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path><path d="M5 21h14"></path></svg>
+          </div>
+          <h1 className="font-cormorant text-6xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
+            The Next Name of <span className="italic text-yellow-400">Ultra Luxury</span>
+          </h1>
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-2xl mb-4 sm:mb-6">Private Journeys. Legendary Moments.</p>
+          <p className="font-cormorant text-lg sm:text-xl md:text-2xl lg:text-2xl mb-8 sm:mb-12 max-w-xl mx-auto">
+            Where discerning individuals discover experiences that transcend the ordinary
+          </p>
+          <button className="bg-gold font-cormorant text-black text-lg sm:text-xl md:text-2xl font-semibold px-6 sm:px-8 py-3 rounded shadow hover:bg-yellow-500 transition">Begin Your Experience</button>
+        </div>
+      </section>
+      {/* Down Arrow pinned to bottom center of hero section */}
+      <div className="absolute left-1/2 bottom-4 -translate-x-1/2" style={{opacity: 1}}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down text-gold h-8 w-8"><path d="m6 9 6 6 6-6"></path></svg>
+      </div>
 
     {/* Experience Journey Section */}
          <section className="py-32 bg-[#F9F6F2]">
@@ -727,14 +720,14 @@ export default function Home() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center animate-fade-in-up">
-            <Link href="/consultation">
-              <Button size="lg" className="bg-gold text-charcoal hover:bg-gold/90 px-16 py-6 text-xl font-dm-sans tracking-wide luxury-button shadow-luxury-lg transform hover:scale-105 transition-all duration-300">
+            <Link href="/consultation" className="w-full sm:w-auto">
+              <Button size="lg" className="w-full sm:w-auto bg-gold text-charcoal hover:bg-gold/90 px-8 sm:px-16 py-5 sm:py-6 text-lg sm:text-xl font-dm-sans tracking-wide luxury-button shadow-luxury-lg transform hover:scale-105 transition-all duration-300">
                 Start The Conversation
                 <ArrowRight className="ml-3 h-6 w-6" />
               </Button>
             </Link>
-            <Link href="/partners">
-              <Button size="lg" className="bg-gold text-charcoal hover:bg-gold/90 px-16 py-6 text-xl font-dm-sans tracking-wide luxury-button shadow-luxury-lg transform hover:scale-105 transition-all duration-300">
+            <Link href="/partners" className="w-full sm:w-auto">
+              <Button size="lg" className="w-full sm:w-auto bg-gold text-charcoal hover:bg-gold/90 px-8 sm:px-16 py-5 sm:py-6 text-lg sm:text-xl font-dm-sans tracking-wide luxury-button shadow-luxury-lg transform hover:scale-105 transition-all duration-300">
                 Partner With Us
               </Button>
             </Link>
@@ -768,55 +761,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-ivory py-16 border-t border-gold/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div>
-              <div className="font-playfair text-2xl font-bold text-charcoal mb-4 tracking-wide">
-                Ragam Elyssia
-              </div>
-              <p className="font-inter text-warm-gray text-sm leading-relaxed">
-                Ultra-luxury event planning and concierge services for discerning clientele worldwide.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="font-playfair text-lg font-semibold text-charcoal mb-4 tracking-wide">Quick Links</h4>
-              <div className="space-y-2">
-                <Link href="/about" className="block font-inter text-warm-gray hover:text-charcoal transition-colors text-sm">About</Link>
-                <Link href="/services" className="block font-inter text-warm-gray hover:text-charcoal transition-colors text-sm">Services</Link>
-                <Link href="/consultation" className="block font-inter text-warm-gray hover:text-charcoal transition-colors text-sm">Consultation</Link>
-                <Link href="/contact" className="block font-inter text-warm-gray hover:text-charcoal transition-colors text-sm">Contact</Link>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-playfair text-lg font-semibold text-charcoal mb-4 tracking-wide">Contact</h4>
-              <div className="space-y-3 font-inter text-warm-gray text-sm">
-                <div className="flex items-center">
-                  <Phone className="h-4 w-4 mr-3 text-gold" />
-                  +91 9632069662
-                </div>
-                <div className="flex items-center">
-                  <Mail className="h-4 w-4 mr-3 text-gold" />
-                  ragamelyssia@gmail.com
-                </div>
-                <div className="flex items-center">
-                  <MapPin className="h-4 w-4 mr-3 text-gold" />
-                  Based in India. Serving Global Clients.
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-gold/10 mt-12 pt-8 text-center">
-            <p className="font-inter text-warm-gray text-sm">
-              Copyrights © { currentYear } Ragam Elyssia. Crafted for the discerning.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

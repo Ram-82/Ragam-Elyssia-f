@@ -3,8 +3,11 @@ import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
 import { Link } from 'wouter';
 import { API_BASE_URL, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
-const LoginSignupPage = () => {
+export default function LoginSignupPage() {
   const [activeTab, setActiveTab] = useState('login');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -150,24 +153,25 @@ const LoginSignupPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-stone-50 to-amber-100 flex items-center justify-center p-4">
-      <Link to="/" className="text-black underline absolute top-4 right-4 z-50">
-        ← Back to Home
-      </Link>
+    <>
+      <ScrollToTop />
+      <Header />
+      <div className="min-h-screen bg-gradient-to-br from-stone-50 via-amber-50 to-stone-100 flex items-center justify-center p-4 pt-28 sm:pt-32 relative w-full">
+        
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5 overflow-hidden">
+        <div className="absolute inset-0 opacity-5 overflow-hidden pointer-events-none select-none z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-amber-200 to-stone-300 transform rotate-45 scale-150"></div>
       </div>
-      <div className="relative w-full max-w-md">
+        <div className="relative w-full max-w-md z-10">
         {/* Main Container */}
-        <div className="bg-white/80 backdrop-blur-sm shadow-2xl rounded-3xl border border-amber-100/50 overflow-hidden">
+          <div className="bg-white/80 backdrop-blur-sm shadow-2xl rounded-3xl border border-amber-100/50 overflow-hidden w-full max-w-full">
           {/* Header */}
-          <div className="p-8 pb-4">
+            <div className="p-4 sm:p-8 pb-4">
             <div className="text-center mb-8">
-              <h1 className="text-3xl font-light text-stone-800 mb-2" style={{fontFamily: 'Playfair Display, serif'}}>
+                <h1 className="text-2xl sm:text-3xl font-light text-stone-800 mb-2" style={{fontFamily: 'Playfair Display, serif'}}>
                 Welcome
               </h1>
-              <p className="text-stone-600 text-sm font-light">Experience elegance in every interaction</p>
+                <p className="text-stone-600 text-xs sm:text-sm font-light">Experience elegance in every interaction</p>
             </div>
             {/* Tab Navigation */}
             <div className="flex bg-stone-100/50 rounded-2xl p-1 mb-8">
@@ -194,19 +198,19 @@ const LoginSignupPage = () => {
             </div>
           </div>
           {/* Forms Container */}
-          <div className="px-8 pb-8">
-            {activeTab === 'login' && (
+            <div className="px-2 sm:px-8 pb-8">
+              {activeTab === 'login' && (
               // Login Form
               <div className="space-y-6">
                 <div className="space-y-4">
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Mail className="h-5 w-5 text-stone-400" />
+                        <Mail className="h-6 w-6" style={{ color: '#000', opacity: 1, filter: 'none' }} />
                     </div>
                     <input
                       type="email"
-                      name="email"
-                      autoComplete="username"
+                        name="email"
+                        autoComplete="username"
                       value={loginForm.email}
                       onChange={(e) => updateLoginForm('email', e.target.value)}
                       placeholder="Email address"
@@ -216,12 +220,12 @@ const LoginSignupPage = () => {
                   </div>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Lock className="h-5 w-5 text-stone-400" />
+                        <Lock className="h-6 w-6" style={{ color: '#000', opacity: 1, filter: 'none' }} />
                     </div>
                     <input
                       type={showPassword ? 'text' : 'password'}
-                      name="password"
-                      autoComplete="current-password"
+                        name="password"
+                        autoComplete="current-password"
                       value={loginForm.password}
                       onChange={(e) => updateLoginForm('password', e.target.value)}
                       placeholder="Password"
@@ -238,7 +242,7 @@ const LoginSignupPage = () => {
                   </div>
                 </div>
                 <div className="flex justify-end">
-                  <a href="/forgot-password" className="text-sm text-amber-600 hover:text-amber-700 font-medium transition-colors">
+                    <a href="/forgot-password" className="text-sm text-amber-600 hover:text-amber-700 font-medium transition-colors">
                     Forgot Password?
                   </a>
                 </div>
@@ -258,19 +262,19 @@ const LoginSignupPage = () => {
                   )}
                 </button>
               </div>
-            )}
-            {activeTab === 'signup' && (
+              )}
+              {activeTab === 'signup' && (
               // Signup Form
               <div className="space-y-6">
                 <div className="space-y-4">
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <User className="h-5 w-5 text-stone-400" />
+                        <User className="h-6 w-6" style={{ color: '#000', opacity: 1, filter: 'none' }} />
                     </div>
                     <input
                       type="text"
-                      name="fullName"
-                      autoComplete="name"
+                        name="fullName"
+                        autoComplete="name"
                       value={signupForm.fullName}
                       onChange={(e) => updateSignupForm('fullName', e.target.value)}
                       placeholder="Full Name"
@@ -280,12 +284,12 @@ const LoginSignupPage = () => {
                   </div>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Mail className="h-5 w-5 text-stone-400" />
+                        <Mail className="h-6 w-6" style={{ color: '#000', opacity: 1, filter: 'none' }} />
                     </div>
                     <input
                       type="email"
-                      name="email"
-                      autoComplete="email"
+                        name="email"
+                        autoComplete="email"
                       value={signupForm.email}
                       onChange={(e) => updateSignupForm('email', e.target.value)}
                       placeholder="Email address"
@@ -295,12 +299,12 @@ const LoginSignupPage = () => {
                   </div>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Lock className="h-5 w-5 text-stone-400" />
+                        <Lock className="h-6 w-6" style={{ color: '#000', opacity: 1, filter: 'none' }} />
                     </div>
                     <input
                       type={showPassword ? 'text' : 'password'}
-                      name="password"
-                      autoComplete="new-password"
+                        name="password"
+                        autoComplete="new-password"
                       value={signupForm.password}
                       onChange={(e) => updateSignupForm('password', e.target.value)}
                       placeholder="Password"
@@ -317,12 +321,12 @@ const LoginSignupPage = () => {
                   </div>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Lock className="h-5 w-5 text-stone-400" />
+                        <Lock className="h-6 w-6" style={{ color: '#000', opacity: 1, filter: 'none' }} />
                     </div>
                     <input
                       type={showConfirmPassword ? 'text' : 'password'}
-                      name="confirmPassword"
-                      autoComplete="new-password"
+                        name="confirmPassword"
+                        autoComplete="new-password"
                       value={signupForm.confirmPassword}
                       onChange={(e) => updateSignupForm('confirmPassword', e.target.value)}
                       placeholder="Confirm Password"
@@ -359,7 +363,7 @@ const LoginSignupPage = () => {
         </div>
       </div>        
     </div>
+      <Footer />
+    </>
   );
-};
-
-export default LoginSignupPage;
+}
