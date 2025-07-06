@@ -9,7 +9,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center py-6">
           <Link href="/" className="flex items-center gap-3 group">
-            <img src="/src/assets/logo/logo.png" alt="Ragam Elyssia Logo" className="h-10 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200" />
+            <img src="/src/assets/logo.png" alt="Ragam Elyssia Logo" className="h-10 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200" />
 
             <span className="font-playfair text-2xl font-bold text-charcoal tracking-wide">Ragam Elyssia</span>
           </Link>
