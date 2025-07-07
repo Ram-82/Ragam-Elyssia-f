@@ -68,21 +68,21 @@ export default function Header() {
             </button>
           </div>
           <nav className="flex flex-col px-6 py-4 w-full">
-            <Link href="/" className="text-charcoal font-inter text-xl py-1 w-full mb-3" onClick={() => setDrawerOpen(false)}>Home</Link>
+            <Link href="/" className="text-charcoal font-inter text-sm py-1 w-full mb-3" onClick={() => setDrawerOpen(false)}>Home</Link>
             <div className="border-b border-gold/10 mb-5" />
-            <Link href="/about" className="text-charcoal font-inter text-xl py-1 w-full mb-3" onClick={() => setDrawerOpen(false)}>About</Link>
+            <Link href="/about" className="text-charcoal font-inter text-sm py-1 w-full mb-3" onClick={() => setDrawerOpen(false)}>About</Link>
             <div className="border-b border-gold/10 mb-5" />
-            <Link href="/services" className="text-charcoal font-inter text-xl py-1 w-full mb-3" onClick={() => setDrawerOpen(false)}>Services</Link>
+            <Link href="/services" className="text-charcoal font-inter text-sm py-1 w-full mb-3" onClick={() => setDrawerOpen(false)}>Services</Link>
             <div className="border-b border-gold/10 mb-5" />
-            <Link href="/contact" className="text-charcoal font-inter text-xl py-1 w-full mb-3" onClick={() => setDrawerOpen(false)}>Contact</Link>
+            <Link href="/contact" className="text-charcoal font-inter text-sm py-1 w-full mb-3" onClick={() => setDrawerOpen(false)}>Contact</Link>
         
             <Link href="/consultation" onClick={() => setDrawerOpen(false)}>
-              <Button className="w-full bg-gold text-lg text-charcoal hover:bg-gold-dark transition-all duration-300 py-6 font-inter tracking-wide mb-5">
+              <Button className="w-full bg-gold text-sm text-charcoal hover:bg-gold-dark transition-all duration-300 py-6 font-inter tracking-wide mb-5">
                 Book Consultation
               </Button>
             </Link>
             <Link href="/login" onClick={() => setDrawerOpen(false)}>
-            <Button className="w-full bg-gold text-lg text-charcoal hover:bg-gold-dark transition-all duration-300 py-6 font-inter tracking-wide mb-5">
+            <Button className="w-full bg-gold text-sm text-charcoal hover:bg-gold-dark transition-all duration-300 py-6 font-inter tracking-wide mb-5">
             Login / Signup
               </Button>
             </Link>
