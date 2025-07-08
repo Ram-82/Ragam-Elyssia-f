@@ -15,6 +15,7 @@ import { Link } from "wouter";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import { useUser } from "@/context/UserContext";
 
 const consultationSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -33,6 +34,7 @@ type ConsultationForm = z.infer<typeof consultationSchema>;
 export default function Consultation() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
+  const { user } = useUser() as { user: any };
 
   const form = useForm<ConsultationForm>({
     resolver: zodResolver(consultationSchema),
@@ -157,6 +159,11 @@ export default function Consultation() {
       {/* Consultation Form */}
       <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          {!user && (
+            <div className="mb-6 text-center text-lg text-black font-semibold">
+              * <Link href="/login" className="text-gray font-bold underline hover:text-gold-dark">Login</Link> to save your consultation to your dashboard.
+            </div>
+          )}
           <Card className="bg-cream/10 border-0 shadow-luxury">
             <CardContent className="p-12">
               <Form {...form}>
