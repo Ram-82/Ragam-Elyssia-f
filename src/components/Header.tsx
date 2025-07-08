@@ -1,10 +1,42 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { User as UserIcon, ChevronDown } from "lucide-react";
 import logo from '../assets/logo.png';
+import { useUser } from "@/context/UserContext";
+import { useLocation } from 'wouter';
 
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
+  const desktopDropdownRef = useRef<HTMLDivElement>(null);
+  const mobileDropdownRef = useRef<HTMLDivElement>(null);
+  const { user, loading, logout } = useUser() as { user: any, loading: boolean, logout: () => void };
+  const [, setLocation] = useLocation();
+
+  // Desktop dropdown outside click
+  React.useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (desktopDropdownRef.current && !desktopDropdownRef.current.contains(e.target as Node)) {
+        setDesktopDropdownOpen(false);
+      }
+    }
+    if (desktopDropdownOpen) document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [desktopDropdownOpen]);
+
+  // Mobile dropdown outside click
+  React.useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (mobileDropdownRef.current && !mobileDropdownRef.current.contains(e.target as Node)) {
+        setMobileDropdownOpen(false);
+      }
+    }
+    if (mobileDropdownOpen) document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [mobileDropdownOpen]);
+
   return (
     <nav className="fixed top-0 w-full bg-ivory z-50 border-b border-gold/10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -15,7 +47,7 @@ export default function Header() {
             <span className="font-playfair text-2xl font-bold text-charcoal tracking-wide">Ragam Elyssia</span>
           </Link>
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-12">
+          <div className="hidden lg:flex items-center flex-wrap gap-x-8 gap-y-2">
             <Link href="/" className="text-black hover:text-charcoal transition-colors font-inter tracking-wide text-sm">Home</Link>
             <Link href="/about" className="text-black hover:text-charcoal transition-colors font-inter tracking-wide text-sm">About</Link>
             <Link href="/services" className="text-black hover:text-charcoal transition-colors font-inter tracking-wide text-sm">Services</Link>
@@ -26,16 +58,49 @@ export default function Header() {
                   Book Consultation
                 </Button>
               </Link>
-              <Link href="/login">
-                <Button className="bg-gold text-charcoal hover:bg-gold-dark transition-all duration-300 px-8 py-5 font-inter tracking-wide font-semibold">
-                  Login / Signup
-                </Button>
-              </Link>
+              {user ? (
+                <div className="relative" ref={desktopDropdownRef}>
+                  <button
+                    className="flex justify-center items-center gap-2 px-4 py-2 rounded-full bg-white border border-gold/30 shadow hover:shadow-md transition-all"
+                    onClick={() => setDesktopDropdownOpen((v) => !v)}
+                  >
+                    <UserIcon className="h-6 w-6 text-gold" />
+                    <span className="font-inter text-charcoal text-sm font-medium">{user.fullName?.split(' ')[0] || 'Profile'}</span>
+                    <ChevronDown className="h-4 w-4 text-gold" />
+                  </button>
+                  {desktopDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-44 bg-white border border-gold/20 rounded-lg shadow-lg z-50 py-2">
+                      <button
+                        className="block w-full text-left px-4 py-2 text-charcoal font-inter text-sm transition-colors rounded-md
+                          hover:bg-gold/20 hover:text-gold focus:bg-gold/20 focus:text-gold active:bg-gold/40"
+                        onClick={() => { setDesktopDropdownOpen(false); setLocation('/dashboard'); }}
+                        tabIndex={0}
+                      >
+                        Dashboard
+                      </button>
+                      <button
+                        className="block w-full text-left px-4 py-2 text-red-600 font-inter text-sm transition-colors rounded-md
+                          hover:bg-gold/20 hover:text-gold focus:bg-gold/20 focus:text-gold active:bg-gold/40"
+                        onClick={() => { setDesktopDropdownOpen(false); logout(); }}
+                        tabIndex={0}
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link href="/login">
+                  <Button className="bg-gold text-charcoal hover:bg-gold-dark transition-all duration-300 px-8 py-5 font-inter tracking-wide font-semibold">
+                    Login / Signup
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
           {/* Hamburger for Mobile */}
           <button
-            className="md:hidden flex items-center justify-center p-2 rounded focus:outline-none focus:ring-2 focus:ring-gold"
+            className="lg:hidden flex items-center justify-center p-2 rounded focus:outline-none focus:ring-2 focus:ring-gold"
             onClick={() => setDrawerOpen(true)}
             aria-label="Open menu"
           >
@@ -81,11 +146,44 @@ export default function Header() {
                 Book Consultation
               </Button>
             </Link>
-            <Link href="/login" onClick={() => setDrawerOpen(false)}>
-            <Button className="w-full bg-gold text-sm text-charcoal hover:bg-gold-dark transition-all duration-300 py-6 font-inter tracking-wide mb-5">
-            Login / Signup
-              </Button>
-            </Link>
+            {user ? (
+              <div className="relative mb-5" ref={mobileDropdownRef}>
+                <button
+                  className="flex justify-center items-center gap-2 px-4 py-2 rounded-full bg-white border border-gold/30 shadow hover:shadow-md transition-all w-full"
+                  onClick={() => setMobileDropdownOpen((v) => !v)}
+                >
+                  <UserIcon className="h-6 w-6 text-gold" />
+                  <span className="font-inter text-charcoal text-sm font-medium">{user.fullName?.split(' ')[0] || 'Profile'}</span>
+                  <ChevronDown className="h-4 w-4 text-gold" />
+                </button>
+                {mobileDropdownOpen && (
+                  <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-44 bg-white border border-gold/20 rounded-lg shadow-lg z-50 py-2" style={{ minWidth: 160 }}>
+                    <button
+                      className="block w-full text-left px-4 py-2 text-charcoal font-inter text-sm transition-colors rounded-md
+                        hover:bg-gold/20 hover:text-gold focus:bg-gold/20 focus:text-gold active:bg-gold/40"
+                      onClick={() => { setMobileDropdownOpen(false); setDrawerOpen(false); setLocation('/dashboard'); }}
+                      tabIndex={0}
+                    >
+                      Dashboard
+                    </button>
+                    <button
+                      className="block w-full text-left px-4 py-2 text-red-600 font-inter text-sm transition-colors rounded-md
+                        hover:bg-gold/20 hover:text-gold focus:bg-gold/20 focus:text-gold active:bg-gold/40"
+                      onClick={() => { setMobileDropdownOpen(false); setDrawerOpen(false); logout(); }}
+                      tabIndex={0}
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link href="/login" onClick={() => setDrawerOpen(false)}>
+                <Button className="w-full bg-gold text-sm text-charcoal hover:bg-gold-dark transition-all duration-300 py-6 font-inter tracking-wide mb-5">
+                  Login / Signup
+                </Button>
+              </Link>
+            )}
           </nav>
         </div>
       </div>

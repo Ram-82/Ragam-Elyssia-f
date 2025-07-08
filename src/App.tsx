@@ -13,6 +13,10 @@ import ForgotPassword from '@/pages/forgotPassword';
 import ResetPassword from '@/pages/resetPassword';
 
 import Dashboard from "@/pages/Dashboard";
+import AdminDashboard from "@/pages/AdminDashboard";
+import DashboardHistory from "@/pages/dashboard/history";
+import ConsultationDetail from "@/pages/dashboard/consultation/[id]";
+import ContactDetail from "@/pages/dashboard/contact/[id]";
 
 function Router() {
   return (
@@ -26,6 +30,10 @@ function Router() {
       <Route path="/forgot-password" component={ForgotPassword} />
       <Route path="/reset-password" component={ResetPassword} />
       <Route path="/dashboard" component={Dashboard} />
+      <Route path="/dashboard/history" component={DashboardHistory} />
+      <Route path="/dashboard/consultation/:id" component={ConsultationDetail} />
+      <Route path="/dashboard/contact/:id" component={ContactDetail} />
+      <Route path="/admin" component={AdminDashboard} />
       <Route component={NotFound} />
     </Switch>
   );

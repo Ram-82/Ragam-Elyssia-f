@@ -1,14 +1,17 @@
 import React,{ useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { API_BASE_URL, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 import Header from "@/components/Header";
+import { useUser } from "@/context/UserContext";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from '@/components/ui/toaster';
 
 export default function LoginSignupPage() {
+  const [, setLocation] = useLocation();
+  const { refreshUser } = useUser() as { refreshUser: () => void };
   const [activeTab, setActiveTab] = useState('login');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -40,7 +43,9 @@ export default function LoginSignupPage() {
           description: 'Welcome back!',
         });
         localStorage.setItem('token', data.token);
-        // Optionally redirect or update UI here
+        await refreshUser();
+        setTimeout(() => setLocation('/dashboard'), 2000); // Wait 3.5 seconds before navigating
+        return;
       } else {
         toast({
           title: 'Error',

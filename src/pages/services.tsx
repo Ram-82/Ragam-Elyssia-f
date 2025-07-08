@@ -87,7 +87,7 @@ export default function Services() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {services.map((service, index) => (
               <Card key={index} className="bg-cream/10 border-0 shadow-luxury hover:shadow-luxury-lg transition-all duration-500 group">
-                <CardContent className="p-12">
+                <CardContent className="p-4 sm:p-12">
                   <div className="mb-8">
                     <service.icon className="text-gold h-16 w-16 mb-6" />
                     <h2 className="font-playfair text-3xl font-bold text-charcoal mb-4 tracking-wide">
@@ -114,7 +114,7 @@ export default function Services() {
                     </ul>
                   </div>
 
-                  <div className="mb-8 p-6 bg-white/50 rounded-lg">
+                  <div className="mb-4 sm:mb-8 p-4 sm:p-6 bg-white/50 rounded-lg">
                     <h3 className="font-playfair text-lg font-semibold text-charcoal mb-4 tracking-wide">
                       Our Approach:
                     </h3>

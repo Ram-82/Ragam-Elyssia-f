@@ -70,18 +70,8 @@ export default function Consultation() {
   if (isSubmitted) {
     return (
       <div className="min-h-screen bg-ivory">
-        {/* Navigation */}
-        <nav className="fixed top-0 w-full bg-ivory/95 backdrop-blur-sm z-50 border-b border-gold/10">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="flex justify-between items-center py-6">
-              <Link href="/">
-                <div className="font-playfair text-2xl font-bold text-charcoal tracking-wide">
-                  Ragam Elyssia
-                </div>
-              </Link>
-            </div>
-          </div>
-        </nav>
+        <ScrollToTop />
+        <Header />
         {/* Success Message */}
         <section className="pt-32 pb-24 px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
@@ -133,13 +123,14 @@ export default function Consultation() {
                 Have questions? Reach us at <a href="mailto:ragamelyssia@gmail.com" className="text-gold hover:text-gold-dark">ragamelyssia@gmail.com</a> or <a href="tel:+919632069662" className="text-gold hover:text-gold-dark">+91 9632069662</a>
               </p>
               <Link href="/">
-                <Button className="bg-charcoal text-ivory hover:bg-gold hover:text-charcoal transition-all duration-300 px-8 py-3 font-inter tracking-wide">
+                <Button className="bg-charcoal mt-5 text-ivory hover:bg-gold hover:text-charcoal transition-all duration-300 px-8 py-3 font-inter tracking-wide">
                   Return Home
                 </Button>
               </Link>
             </div>
           </div>
         </section>
+        <Footer />
       </div>
     );
   }
