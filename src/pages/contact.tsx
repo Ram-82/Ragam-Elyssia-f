@@ -182,7 +182,7 @@ export default function Contact() {
               <div>
                 {!user && (
                   <div className="mb-6 text-center text-lg text-black font-semibold">
-                    * <Link href="/login" className="text-gray font-bold underline hover:text-gold-dark">Login</Link> to save your consultation to your dashboard.
+                    * <Link href="/login" className="text-gray font-bold underline hover:text-gold-dark">Login</Link> to save your contact query to your dashboard.
                     </div>
                 )}
                 {isSubmitted ? (
