@@ -61,6 +61,7 @@ export default {
           border: "var(--sidebar-border)",
           ring: "var(--sidebar-ring)",
         },
+
       },
       keyframes: {
         "accordion-down": {
@@ -79,11 +80,37 @@ export default {
             height: "0",
           },
         },
+        "luxury-float": {
+          "0%, 100%": {
+            transform: "translateY(0px)",
+          },
+          "50%": {
+            transform: "translateY(-10px)",
+          },
+        },
+        "fade-in-up": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(30px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "luxury-float": "luxury-float 3s ease-in-out infinite",
+        "fade-in-up": "fade-in-up 0.8s ease-out",
       },
+      boxShadow: {
+        "luxury": "0 10px 25px -3px rgba(212, 175, 55, 0.1), 0 4px 6px -2px rgba(212, 175, 55, 0.05)",
+        "luxury-lg": "0 20px 25px -5px rgba(212, 175, 55, 0.1), 0 10px 10px -5px rgba(212, 175, 55, 0.04)",
+        "luxury-xl": "0 25px 50px -12px rgba(212, 175, 55, 0.25)",
+      },
+
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],

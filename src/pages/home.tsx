@@ -19,6 +19,7 @@ import luxuryImage from "../assets/luxury.png"
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import LuxuryChatbot from "@/components/LuxuryChatbot";
 
 const currentYear = new Date().getFullYear();
 
@@ -760,6 +761,7 @@ export default function Home() {
       </section>
 
       <Footer />
+      <LuxuryChatbot />
     </div>
   );
 }
